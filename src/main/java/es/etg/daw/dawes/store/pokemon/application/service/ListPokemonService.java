@@ -1,0 +1,21 @@
+package es.etg.daw.dawes.store.pokemon.application.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import es.etg.daw.dawes.store.pokemon.application.usecase.FindPokemonUseCase;
+import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor 
+@Service 
+public class ListPokemonService {
+    private final FindPokemonUseCase findPokemonUseCase;
+
+    //Orquestamos a FindPokemonUseCase para recibir una lista de pokemons declarada ahí
+    public List<Pokemon> listarPokemons() {
+        List<Pokemon> pokemons = findPokemonUseCase.findAll();
+        return pokemons;
+    }
+}
