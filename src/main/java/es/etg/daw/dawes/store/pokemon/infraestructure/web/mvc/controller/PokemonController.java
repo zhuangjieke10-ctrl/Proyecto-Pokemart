@@ -58,6 +58,13 @@ public class PokemonController {
             """.formatted(pokemon.getId(), pokemon.getNombre(), pokemon.getTipo(), pokemon.getPrecio(), pokemon.getCreatedAt())
           );
       }
+      html.append(
+          """
+                  </body>
+              </html>
+          """
+          return html.toString();
+      );
 
     @PostMapping
     @ResponseBody
