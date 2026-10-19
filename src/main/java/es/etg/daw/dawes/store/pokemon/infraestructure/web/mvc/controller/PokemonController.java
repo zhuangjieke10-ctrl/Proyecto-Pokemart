@@ -28,8 +28,8 @@ public class PokemonController {
     private final ListPokemonService listPokemonService;
 
 
-    //Nuevo método, como solo veremos información, y no la daremos como con createPokemon, es un GetMapping
-    @GetMapping("/listar")
+   //Nuevo método, como solo veremos información, y no la daremos como con createPokemon, es un GetMapping
+    @GetMapping("/lista")
     @ResponseBody 
     //Vamos a retornar un JSON de los Pokemons, en formato PokemonResponse
     public String listPokemon() {
@@ -37,31 +37,27 @@ public class PokemonController {
       List<Pokemon> pokemons = listPokemonService.listarPokemons();
 
       StringBuilder html = new StringBuilder();
-
       html.append(
         """
-         <html>
+        <html>
           <body>
-            <h1>Lista de Pokémon estáticos</h1>
-      """);
-        
+        """
+      );
 
       //Por cada Pokemon que haya en la lista de pokemons, lo añadiremos a la lista de responses formateandolo en el  mapper
       for (Pokemon pokemon : pokemons) {
           html.append(
             """
               <div>
-                <p>ID: %s </p>
-                <p>Nombre: %s </p>
-                <p>Tipo: %s </p>
-                <p>Fecha creación: %s</p>
+                <p>ID: %s</p>
+                <p>Nombre: %s</p>
+                <p>Tipo: %s</p>
+                <p>Precio: %s</p>
+                <p>Fecha creada: %s</p>
               </div>
             """.formatted(pokemon.getId(), pokemon.getNombre(), pokemon.getTipo(), pokemon.getPrecio(), pokemon.getCreatedAt())
           );
       }
-
-      return html.toString();
-    }
 
     @PostMapping
     @ResponseBody
