@@ -127,3 +127,7 @@ Arranca la aplicación, y en tu navegador introduce
 Si todo va bien,  deberías de ver el siguiente contenido:
 
 <img src= "./images/listaPokemons.png">
+
+
+
+
