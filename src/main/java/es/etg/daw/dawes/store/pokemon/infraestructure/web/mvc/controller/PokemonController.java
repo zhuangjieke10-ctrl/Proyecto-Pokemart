@@ -63,8 +63,10 @@ public class PokemonController {
                   </body>
               </html>
           """
-          return html.toString();
+          
       );
+      return html.toString();
+    }
 
     @PostMapping
     @ResponseBody
