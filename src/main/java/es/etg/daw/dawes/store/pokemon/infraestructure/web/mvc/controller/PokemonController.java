@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.etg.daw.dawes.store.pokemon.application.command.CreatePokemonCommand;
+import es.etg.daw.dawes.store.pokemon.application.command.ListPokemonCommand;
 import es.etg.daw.dawes.store.pokemon.application.service.CreatePokemonService;
 import es.etg.daw.dawes.store.pokemon.application.service.ListPokemonService;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
@@ -28,25 +29,28 @@ public class PokemonController {
     private final ListPokemonService listPokemonService;
 
 
-   //Nuevo método, como solo veremos información, y no la daremos como con createPokemon, es un GetMapping
-    @GetMapping("/lista")
-    @ResponseBody 
-    //Vamos a retornar un JSON de los Pokemons, en formato PokemonResponse
-    public String listPokemon() {
-      //Sacamos los Pokemons de la lista
-      List<Pokemon> pokemons = listPokemonService.listarPokemons();
+@GetMapping
+@ResponseBody
+public String listPokemon() {
 
-      StringBuilder html = new StringBuilder();
-      html.append(
+    ListPokemonCommand comando = new ListPokemonCommand(List.of(
+        new CreatePokemonCommand("Bulbasaur", "Planta", "", 10),
+        new CreatePokemonCommand("Charmander", "Fuego", "", 20),
+        new CreatePokemonCommand("Squirtle", "Agua", "", 25)
+    ));
+
+    List<Pokemon> pokemons = listPokemonService.listarPokemons(comando);
+
+    StringBuilder html = new StringBuilder();
+    html.append(
         """
         <html>
           <body>
         """
-      );
+    );
 
-      //Por cada Pokemon que haya en la lista de pokemons, lo añadiremos a la lista de responses formateandolo en el  mapper
-      for (Pokemon pokemon : pokemons) {
-          html.append(
+    for (Pokemon pokemon : pokemons) {
+        html.append(
             """
               <div>
                 <p>ID: %s</p>
@@ -56,17 +60,17 @@ public class PokemonController {
                 <p>Fecha creada: %s</p>
               </div>
             """.formatted(pokemon.getId(), pokemon.getNombre(), pokemon.getTipo(), pokemon.getPrecio(), pokemon.getCreatedAt())
-          );
-      }
-      html.append(
-          """
-                  </body>
-              </html>
-          """
-          
-      );
-      return html.toString();
+        );
     }
+
+    html.append(
+        """
+          </body>
+        </html>
+        """
+    );
+    return html.toString();
+}
 
     @PostMapping
     @ResponseBody
@@ -82,7 +86,7 @@ public class PokemonController {
                 <meta charset="UTF-8">
                 <title>Producto</title>
               </head>
-              <body>
+              <body>S
                 <h1>Pokemon: %s - %s</h1>
                 <p>Tipo: %s </p>
                 <p>Precio: %s </p>
