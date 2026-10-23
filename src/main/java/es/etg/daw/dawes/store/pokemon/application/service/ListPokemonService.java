@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 public class ListPokemonService {
     private final FindPokemonUseCase findPokemonUseCase;
 
-    //Orquestamos a FindPokemonUseCase para recibir una lista de pokemons declarada ahí
     public List<Pokemon> listarPokemons() {
         List<Pokemon> pokemons = findPokemonUseCase.findAll();
         return pokemons;

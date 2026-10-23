@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller 
-@RequestMapping ("/pokemons") //URL será /pokemons
+@RequestMapping ("/pokemons")
 @RequiredArgsConstructor 
 
 public class PokemonController {
@@ -35,7 +35,6 @@ public class PokemonController {
     @GetMapping
     @ResponseBody 
     public String listPokemon() {
-      //Sacamos los Pokemons de la lista
       List<Pokemon> pokemons = listPokemonService.listarPokemons();
 
       StringBuilder html = new StringBuilder();
