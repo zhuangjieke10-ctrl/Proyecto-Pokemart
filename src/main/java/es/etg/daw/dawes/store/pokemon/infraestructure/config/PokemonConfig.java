@@ -3,8 +3,6 @@ package es.etg.daw.dawes.store.pokemon.infraestructure.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import es.etg.daw.dawes.store.pokemon.application.service.CreatePokemonService;
-import es.etg.daw.dawes.store.pokemon.application.service.ListPokemonService;
 import es.etg.daw.dawes.store.pokemon.application.usecase.CreatePokemonUseCase;
 import es.etg.daw.dawes.store.pokemon.application.usecase.FindPokemonUseCase;
 import lombok.RequiredArgsConstructor;
@@ -19,18 +17,9 @@ public class PokemonConfig {
     }
 
     @Bean 
-    public CreatePokemonService createPokemonService(){
-        return new CreatePokemonService(createPokemonUseCase());
-    }
-
-    @Bean 
     public FindPokemonUseCase findPokemonUseCase() {
         return new  FindPokemonUseCase();
     }
 
-    @Bean
-    public ListPokemonService listPokemonService() {
-        return new ListPokemonService(findPokemonUseCase());
-    }
     
 }

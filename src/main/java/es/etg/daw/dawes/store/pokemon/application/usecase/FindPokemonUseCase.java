@@ -7,7 +7,7 @@ import java.util.List;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
 
 public class FindPokemonUseCase {
-    //Queremos retornar tres pokémons estáticos, lo mejor es hacerlos aquí directamente y retornarlos, con un builder, como se hizo en CreatePokemonUseCase
+
     public List<Pokemon> findAll() {
         List<Pokemon> pokemons = new ArrayList<>();
         pokemons.add(Pokemon.builder().nombre("Bulbsaur").precio(10).tipo("Planta").createdAt(LocalDateTime.now()).build());

@@ -14,4 +14,4 @@ Si rellenamos el formulario deberíamos ver la siguiente página:
 
 <img src = "./images/formularioCompleto.png">
 
-[← Volver al índice](./README.md)
+[← Volver al índice](../README.md)

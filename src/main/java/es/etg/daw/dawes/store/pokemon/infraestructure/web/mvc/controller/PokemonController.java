@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller 
-@RequestMapping ("/pokemons") //URL será /pokemons
+@RequestMapping ("/pokemons")
 @RequiredArgsConstructor 
 
 public class PokemonController {
@@ -28,12 +28,12 @@ public class PokemonController {
     private final ListPokemonService listPokemonService;
 
 
-   //Nuevo método, como solo veremos información, y no la daremos como con createPokemon, es un GetMapping
-    @GetMapping("/lista")
+   
+    @GetMapping
     @ResponseBody 
-    //Vamos a retornar un JSON de los Pokemons, en formato PokemonResponse
+    
     public String listPokemon() {
-      //Sacamos los Pokemons de la lista
+  
       List<Pokemon> pokemons = listPokemonService.listarPokemons();
 
       StringBuilder html = new StringBuilder();
@@ -44,7 +44,7 @@ public class PokemonController {
         """
       );
 
-      //Por cada Pokemon que haya en la lista de pokemons, lo añadiremos a la lista de responses formateandolo en el  mapper
+      
       for (Pokemon pokemon : pokemons) {
           html.append(
             """

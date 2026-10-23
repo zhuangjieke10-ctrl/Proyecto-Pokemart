@@ -62,6 +62,6 @@ Si todo va bien,  deberías de ver el siguiente contenido:
 
 <img src= "./images/listaPokemons.png">
 
-[← Volver al índice](./README.md)
+[← Volver al índice](../README.md)
 
 
