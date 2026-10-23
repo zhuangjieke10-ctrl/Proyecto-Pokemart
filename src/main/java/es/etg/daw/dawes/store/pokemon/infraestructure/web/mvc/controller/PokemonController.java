@@ -2,19 +2,23 @@ package es.etg.daw.dawes.store.pokemon.infraestructure.web.mvc.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.etg.daw.dawes.store.pokemon.application.command.CreatePokemonCommand;
 import es.etg.daw.dawes.store.pokemon.application.service.CreatePokemonService;
+import es.etg.daw.dawes.store.pokemon.application.service.DeletePokemonService;
 import es.etg.daw.dawes.store.pokemon.application.service.ListPokemonService;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
 import es.etg.daw.dawes.store.pokemon.infraestructure.mapper.PokemonMapper;
 import es.etg.daw.dawes.store.pokemon.infraestructure.web.mvc.dto.PokemonRequest;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 
@@ -26,12 +30,10 @@ public class PokemonController {
 
     private final CreatePokemonService createPokemonService;
     private final ListPokemonService listPokemonService;
+    private final DeletePokemonService deletePokemonService;
 
-
-   //Nuevo método, como solo veremos información, y no la daremos como con createPokemon, es un GetMapping
-    @GetMapping("/lista")
+    @GetMapping
     @ResponseBody 
-    //Vamos a retornar un JSON de los Pokemons, en formato PokemonResponse
     public String listPokemon() {
       //Sacamos los Pokemons de la lista
       List<Pokemon> pokemons = listPokemonService.listarPokemons();
@@ -44,7 +46,6 @@ public class PokemonController {
         """
       );
 
-      //Por cada Pokemon que haya en la lista de pokemons, lo añadiremos a la lista de responses formateandolo en el  mapper
       for (Pokemon pokemon : pokemons) {
           html.append(
             """
@@ -90,5 +91,11 @@ public class PokemonController {
               </body>
             </html>
             """.formatted(pokemon.getId(), pokemon.getNombre(), pokemon.getTipo(), pokemon.getPrecio(), pokemon.getCreatedAt());
+    }
+
+    @DeleteMapping ("/{id}")
+    public ResponseEntity<?> deletePokemon(@PathVariable int id){
+        deletePokemonService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
