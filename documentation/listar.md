@@ -1,67 +1,19 @@
-## 3. Implementación de una lista estática de 3 Pokémons
+# Listar Pokémon — GET
 
-### Cambios en la estructura
+El listado de prueba muestra tres Pokémon estáticos: Bulbsaur, Charmander y Squirtle.
 
-```txt
-.
-│   StoreApplication.java
-│   
-└───pokemon
-    ├───application
-    │   ├───command
-    │   │       CreatePokemonCommand.java
-    │   │       
-    │   ├───service
-    │   │       CreatePokemonService.java
-    │   │       ListPokemonService.java
-    │   │       
-    │   └───usecase
-    │           CreatePokemonUseCase.java
-    │           FindPokemonUseCase.java
-    │           
-    ├───domain
-    │   └───model
-    │           Pokemon.java
-    │           
-    └───infraestructure
-        ├───config
-        │       PokemonConfig.java
-        │       
-        ├───mapper
-        │       PokemonMapper.java
-        │       
-        └───web
-            └───mvc
-                ├───controller
-                │       PokemonController.java
-                │       
-                └───dto
-                        PokemonRequest.java
-                        PokemonResponse.java
-```
+## Cómo probarlo
 
-### Archivos nuevos
+1. Iniciar `StoreApplication.java`.
+2. Abrir <http://localhost:8080/pokemons>.
+3. El Controller devuelve una página HTML con los tres Pokémon.
 
-#### Application
+![Listado de prueba](images/listaPokemons.png)
 
-- ListPokemonService.java
-- FindPokemonUseCase.java
+## Cómo funciona
 
-### Otros cambios
+`PokemonController` atiende `GET /pokemons` y llama a `ListPokemonService`, que delega en `FindPokemonUseCase`. El UseCase crea los tres objetos y devuelve una lista al Controller. Finalmente, el Controller genera el HTML con `StringBuilder` y un `for-each`.
 
-Se ha creado un nuevo método en PokemonController.java para responder a la petición de listar con */listar*.
-En PokemonConfig.java se han añadido los beans de ListPokemonService.java y FindPokemonUseCase.java para que Spring instancie ambas clases.
+**Limitación actual:** la lista se vuelve a crear en cada petición y no incluye los Pokémon enviados por POST.
 
-### ¿Cómo probarlo?
-
-Arranca la aplicación, y en tu navegador introduce
-
-<http://localhost:8080/pokemons/lista>
-
-Si todo va bien,  deberías de ver el siguiente contenido:
-
-<img src= "./images/listaPokemons.png">
-
-[← Volver al índice](../README.md)
-
-
+[← Volver al README](../README.md)

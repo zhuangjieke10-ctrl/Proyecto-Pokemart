@@ -1,17 +1,22 @@
-## 2. Creación de Pokemon y como ejecutar
+# Crear Pokémon — POST
 
-Inicia el programa desde la clase *StoreApplication.java*. Debería salir en la terminal líneas como esta:
+La aplicación permite introducir un Pokémon mediante un formulario HTML. El navegador envía sus datos a `POST /pokemons`.
 
-```bash
-2026-10-09T18:35:54.327+02:00  INFO 6809 --- [store] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
-```
+## Cómo probarlo
 
-Y desde  <http://localhost:8080/formulario-crear-pokemon.html> Deberías ver una imagen como esta:
+1. Iniciar `StoreApplication.java` (la aplicación escucha en el puerto `8080`).
+2. Abrir <http://localhost:8080/formulario-crear-pokemon.html>.
+3. Rellenar los campos y pulsar **Crear Pokemon**.
+4. El navegador recibe una página HTML con los datos del Pokémon creado.
 
-<img src = "./images/formulario.png">
+![Formulario de creación](images/formulario.png)
 
-Si rellenamos el formulario deberíamos ver la siguiente página:
+![Resultado tras crear un Pokémon](images/formularioCompleto.png)
 
-<img src = "./images/formularioCompleto.png">
+## Cómo funciona
 
-[← Volver al índice](../README.md)
+El Controller recibe `PokemonRequest` y el Mapper lo transforma en `CreatePokemonCommand`. Después, `CreatePokemonService` llama a `CreatePokemonUseCase`, que crea el objeto con `Pokemon.builder()` y devuelve el resultado al Controller.
+
+**Limitación actual:** el Pokémon no se almacena en una base de datos.
+
+[← Volver al README](../README.md)

@@ -5,21 +5,29 @@ import org.springframework.context.annotation.Configuration;
 
 import es.etg.daw.dawes.store.pokemon.application.usecase.CreatePokemonUseCase;
 import es.etg.daw.dawes.store.pokemon.application.usecase.FindPokemonUseCase;
-import lombok.RequiredArgsConstructor;
+import es.etg.daw.dawes.store.pokemon.application.usecase.DeletePokemonUseCase;
+import es.etg.daw.dawes.store.pokemon.application.usecase.EditPokemonUseCase;
 
-@Configuration 
-@RequiredArgsConstructor 
+@Configuration
 public class PokemonConfig {
 
-    @Bean 
-    public CreatePokemonUseCase createPokemonUseCase(){
+    @Bean
+    public CreatePokemonUseCase createPokemonUseCase() {
         return new CreatePokemonUseCase();
     }
 
-    @Bean 
+    @Bean
     public FindPokemonUseCase findPokemonUseCase() {
-        return new  FindPokemonUseCase();
+        return new FindPokemonUseCase();
     }
 
-    
+    @Bean
+    public DeletePokemonUseCase deletePokemonUseCase() {
+        return new DeletePokemonUseCase();
+    }
+
+    @Bean
+    public EditPokemonUseCase editPokemonUseCase() {
+        return new EditPokemonUseCase();
+    }
 }
