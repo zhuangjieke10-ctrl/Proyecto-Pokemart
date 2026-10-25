@@ -40,8 +40,6 @@ flowchart LR
 
 Las flechas representan las dependencias principales entre capas, no el orden exacto de ejecución de las peticiones.
 
-Más detalles: [Arquitectura](documentation/arquitectura.md).
-
 ## Documentación
 
 - [Arquitectura y decisiones de diseño](documentation/arquitectura.md)
@@ -49,9 +47,3 @@ Más detalles: [Arquitectura](documentation/arquitectura.md).
 - [Listado de Pokémon — GET](documentation/listar.md)
 - [Modificación de Pokémon — PUT](documentation/editar.md)
 - [Eliminación de Pokémon — DELETE](documentation/eliminar.md)
-
-###### Equipo
-
-###### - Cristian David Anghel
-###### - Jieke Zhuang
-###### - Mauro Díaz
