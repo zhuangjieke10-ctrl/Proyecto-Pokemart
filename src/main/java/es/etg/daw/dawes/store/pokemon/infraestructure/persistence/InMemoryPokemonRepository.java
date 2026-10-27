@@ -51,6 +51,15 @@ public class InMemoryPokemonRepository implements IPokemonRepository{
     @Override
 
     public void deleteById(int id) {
+                for(int i = 0; i < pokemons.size() ; i++){
+                        if(pokemons.get(i).getId() == id){
+                          pokemons.remove(id);
+                        }
+                        break;
+
+                }
+
+        
 
     }
 
