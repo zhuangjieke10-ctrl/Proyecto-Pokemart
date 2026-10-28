@@ -1,10 +1,13 @@
 package es.etg.daw.dawes.store.pokemon.application.usecase;
 
-import lombok.RequiredArgsConstructor;
+import es.etg.daw.dawes.store.pokemon.domain.repository.PokemonRepository;
+import lombok.AllArgsConstructor;
 
-@RequiredArgsConstructor  
+@AllArgsConstructor   
 public class DeletePokemonUseCase {
+    public PokemonRepository pokemonRepository;
+    
     public void delete(int id) {
-
+        
     }
 }
