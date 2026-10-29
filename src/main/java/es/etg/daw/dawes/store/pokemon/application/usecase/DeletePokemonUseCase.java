@@ -8,6 +8,7 @@ public class DeletePokemonUseCase {
     public PokemonRepository pokemonRepository;
     
     public void delete(int id) {
+    pokemonRepository.deleteById(id);
         
     }
 }

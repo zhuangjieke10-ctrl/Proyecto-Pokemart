@@ -1,6 +1,7 @@
 package es.etg.daw.dawes.store.pokemon.application.usecase;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import es.etg.daw.dawes.store.pokemon.application.command.EditPokemonCommand;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
@@ -13,7 +14,20 @@ public class EditPokemonUseCase {
     public PokemonRepository pokemonRepository;
     
     public Pokemon update(EditPokemonCommand command) {
-        Pokemon pokemon = new  Pokemon(command.id(), null, null, command.foto(), command.precio(), LocalDateTime.now());
+    Optional <Pokemon> resultado = pokemonRepository.getById(command.id());
+
+    if (resultado.get() != null) {
+        Pokemon pokemon = resultado.get();
+
+        pokemon.setFoto(command.foto());
+        pokemon.setPrecio(command.precio());
+        pokemon.setNombre(command.nombre());
+        pokemon.setTipo(command.tipo());
+
         return pokemonRepository.save(pokemon);
     }
+
+    return null;
+    }
 }
+

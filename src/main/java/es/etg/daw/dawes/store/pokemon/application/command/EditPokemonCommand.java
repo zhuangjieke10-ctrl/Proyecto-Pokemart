@@ -12,4 +12,6 @@ public class EditPokemonCommand {
     private int id;
     private String foto;
     private double precio;
+    private String nombre;
+    private String tipo;
 }
