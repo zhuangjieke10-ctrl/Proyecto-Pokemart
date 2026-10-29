@@ -1,9 +1,9 @@
 package es.etg.daw.dawes.store.pokemon.application.usecase;
 
-import java.time.LocalDateTime;
 import java.util.Optional;
 
 import es.etg.daw.dawes.store.pokemon.application.command.EditPokemonCommand;
+import es.etg.daw.dawes.store.pokemon.domain.error.EntityNotFoundException.PokemonNotFoundException;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
 import es.etg.daw.dawes.store.pokemon.domain.repository.PokemonRepository;
 import lombok.AllArgsConstructor;
@@ -25,9 +25,12 @@ public class EditPokemonUseCase {
         pokemon.setTipo(command.tipo());
 
         return pokemonRepository.save(pokemon);
+    }else{
+        
+        throw new PokemonNotFoundException();
     }
 
-    return null;
+    
     }
 }
 
