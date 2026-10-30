@@ -16,19 +16,20 @@ public class EditPokemonUseCase {
     public Pokemon update(EditPokemonCommand command) {
     Optional <Pokemon> resultado = pokemonRepository.getById(command.id());
 
-    if (resultado.get() != null) {
-        Pokemon pokemon = resultado.get();
-
-        pokemon.setFoto(command.foto());
-        pokemon.setPrecio(command.precio());
-        pokemon.setNombre(command.nombre());
-        pokemon.setTipo(command.tipo());
-
-        return pokemonRepository.save(pokemon);
-    }else{
-        
+    if (resultado.isEmpty()) {
         throw new PokemonNotFoundException();
     }
+
+    Pokemon pokemon = resultado.get();
+
+    pokemon.setFoto(command.foto());
+    pokemon.setPrecio(command.precio());
+    pokemon.setNombre(command.nombre());
+    pokemon.setTipo(command.tipo());
+
+    return pokemonRepository.save(pokemon);
+ 
+    
 
     
     }
