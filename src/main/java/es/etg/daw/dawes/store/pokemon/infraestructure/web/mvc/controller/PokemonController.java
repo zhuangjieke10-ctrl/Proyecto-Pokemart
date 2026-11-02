@@ -38,6 +38,8 @@ public class PokemonController {
     private final DeletePokemonService deletePokemonService;
     private final EditPokemonService editPokemonService;
 
+    private final PokemonMapper pokemonMapper;
+    
     @GetMapping
     @ResponseBody 
     public String listPokemon() {
@@ -78,7 +80,7 @@ public class PokemonController {
     @PostMapping
     @ResponseBody
     public String createPokemon(PokemonRequest request) {
-        CreatePokemonCommand commando = PokemonMapper.toCommand(request);
+        CreatePokemonCommand commando = pokemonMapper.toCommand(request);
 
         Pokemon pokemon = createPokemonService.createPokemon(commando);
         
@@ -109,8 +111,8 @@ public class PokemonController {
     @PutMapping("/{id}")
     @ResponseBody 
     public PokemonResponse editPokemon(@PathVariable int id, @RequestBody PokemonRequest pokemonRequest){
-        EditPokemonCommand comando = PokemonMapper.toCommand(id, pokemonRequest);
+        EditPokemonCommand comando = pokemonMapper.toCommand(id, pokemonRequest);
         Pokemon pokemon = editPokemonService.update(comando);
-        return  PokemonMapper.toResponse(pokemon); //Respuesta
+        return  pokemonMapper.toResponse(pokemon); //Respuesta
     }
 }

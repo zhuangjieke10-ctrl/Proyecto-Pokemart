@@ -1,26 +1,22 @@
 package es.etg.daw.dawes.store.pokemon.infraestructure.mapper;
 
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+
 import es.etg.daw.dawes.store.pokemon.application.command.CreatePokemonCommand;
 import es.etg.daw.dawes.store.pokemon.application.command.EditPokemonCommand;
 import es.etg.daw.dawes.store.pokemon.domain.model.Pokemon;
 import es.etg.daw.dawes.store.pokemon.infraestructure.web.mvc.dto.PokemonRequest;
 import es.etg.daw.dawes.store.pokemon.infraestructure.web.mvc.dto.PokemonResponse;
 
-public class PokemonMapper {
-    
-    public static CreatePokemonCommand toCommand(PokemonRequest request){
-        return new CreatePokemonCommand(request.nombre(), 
-                                    request.tipo(),request.foto(),
-                                    request.precio());
-    }
 
-    public static PokemonResponse toResponse (Pokemon pokemon){
-        return new PokemonResponse(pokemon.getId(), pokemon.getNombre(), 
-                                pokemon.getTipo(), pokemon.getFoto(), 
-                                pokemon.getPrecio(), pokemon.getCreatedAt());
-    }
+@Mapper(componentModel = "spring")
+public interface PokemonMapper {
 
-    public static EditPokemonCommand toCommand(int id, PokemonRequest request){
-        return new EditPokemonCommand(id,request.foto(), request.precio(),request.nombre(),request.tipo());
-    }
+    CreatePokemonCommand toCommand(PokemonRequest request);
+
+    PokemonResponse toResponse(Pokemon pokemon);
+
+    @Mapping(source = "id", target = "id")
+    EditPokemonCommand toCommand(int id, PokemonRequest request);
 }
