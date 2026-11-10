@@ -17,5 +17,3 @@ curl -i -X PUT http://localhost:8080/pokemons/5 \
 ```
 
 En **Debug**, colocar un breakpoint en `PokemonController.editPokemon()` o `EditPokemonUseCase.update()` y comprobar que llega `id = 5`, la foto y el precio.
-
-[← Volver al README](../README.md)

@@ -19,4 +19,10 @@ El Controller recibe `PokemonRequest` y el Mapper lo transforma en `CreatePokemo
 
 **Limitación actual:** el Pokémon no se almacena en una base de datos.
 
-[← Volver al README](../README.md)
+## Gestión de errores
+
+La aplicación esta preparada para mostrar un mensaje de error dependiendo de los siguientes casos:
+
+- El nombre del Pokémon no puede estar **vacío**. Tampoco  puede tener un **salto de línea ni espacio  en blanco**.
+- El tipo del Pokémon no puede estar **vacío**.
+- El preciod el Pokémon no puede estar ni por debajo de 0 ni por encima de 100.

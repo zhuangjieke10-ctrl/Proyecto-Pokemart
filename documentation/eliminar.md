@@ -31,5 +31,3 @@ Deberías ver el siguiente formulario:
 En **Debug**, colocar un breakpoint en `DeletePokemonUseCase.delete(int id)` y comprobar que llega `id = 5`.
 
 <img src="./images/breakpointid.png">
-
-[← Volver al README](../README.md)

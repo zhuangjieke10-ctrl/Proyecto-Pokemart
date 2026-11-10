@@ -28,5 +28,3 @@ La aplicación se divide de forma jerárquica desde el núcleo hasta el exterior
 
 * **Qué es:** Es la capa que conecta nuestra aplicación con el mundo exterior.
 * **Cómo se usa:** Recibe las peticiones HTTP del cliente a través del controlador (PokemonController), transforma los datos usando el Mapper y delega en los servicios de aplicación.
-
-[← Volver al índice](../README.md)
