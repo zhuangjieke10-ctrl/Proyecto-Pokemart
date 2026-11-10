@@ -50,6 +50,9 @@ public class PokemonController {
     @GetMapping
     @ResponseBody 
     public String listPokemon() {
+
+      //código para probar el advice
+      if(true) throw new NullPointerException("Simulado para probar el advice");
   
       List<Pokemon> pokemons = listPokemonService.listarPokemons();
 
@@ -119,7 +122,7 @@ public class PokemonController {
 
     @PutMapping("/{id}")
     @ResponseBody 
-    public PokemonResponse editPokemon(@PathVariable int id, @RequestBody PokemonRequest pokemonRequest){
+    public PokemonResponse editPokemon(@PathVariable int id, @Valid @RequestBody PokemonRequest pokemonRequest){
         EditPokemonCommand comando = pokemonMapper.toCommand(id, pokemonRequest);
         Pokemon pokemon = editPokemonService.update(comando);
         return  pokemonMapper.toResponse(pokemon); //Respuesta
