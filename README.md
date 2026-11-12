@@ -47,3 +47,4 @@ Las flechas representan las dependencias principales entre capas, no el orden ex
 - [Listado de Pokémon — GET](documentation/listar.md)
 - [Modificación de Pokémon — PUT](documentation/editar.md)
 - [Eliminación de Pokémon — DELETE](documentation/eliminar.md)
+- [Manejo de excepciónes de otros slices](documentation/gestion-errores.md)
