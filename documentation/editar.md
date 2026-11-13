@@ -11,9 +11,19 @@ Esta práctica permite recibir el **ID** del Pokémon desde la ruta y los **nuev
 Iniciar `StoreApplication.java` y ejecutar en una terminal:
 
 ```bash
-curl -i -X PUT http://localhost:8080/pokemons/5 \
+curl -i -X PUT http://localhost:8080/pokemons/1 \
   -H "Content-Type: application/json" \
-  -d '{"nombre":"Pikachu","tipo":"Electrico","foto":"https://ejemplo.com/pikachu.png","precio":35.5}'
+  -d '{"nombre":"cambiado","tipo":"Electrico","foto":"https://ejemplo.com/pikachu.png","precio":35.5}'
 ```
 
-En **Debug**, colocar un breakpoint en `PokemonController.editPokemon()` o `EditPokemonUseCase.update()` y comprobar que llega `id = 5`, la foto y el precio.
+Debería de verse los resultados en <http://localhost:8080/pokemons>.
+
+<img src="./images/modificacionPokemon.png">
+
+## Gestión de validación
+
+La aplicación esta preparada para mostrar un mensaje de error dependiendo de los siguientes casos:
+
+- El nombre del Pokémon no puede estar **vacío**. Tampoco  puede tener un **salto de línea ni espacio  en blanco**.
+- El tipo del Pokémon no puede estar **vacío**.
+- El preciod el Pokémon no puede estar ni por debajo de 0 ni por encima de 100.

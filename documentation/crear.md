@@ -17,9 +17,7 @@ La aplicación permite introducir un Pokémon mediante un formulario HTML. El na
 
 El Controller recibe `PokemonRequest` y el Mapper lo transforma en `CreatePokemonCommand`. Después, `CreatePokemonService` llama a `CreatePokemonUseCase`, que crea el objeto con `Pokemon.builder()` y devuelve el resultado al Controller.
 
-**Limitación actual:** el Pokémon no se almacena en una base de datos.
-
-## Gestión de errores
+## Gestión de validación
 
 La aplicación esta preparada para mostrar un mensaje de error dependiendo de los siguientes casos:
 

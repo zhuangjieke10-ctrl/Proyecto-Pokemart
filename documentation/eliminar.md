@@ -28,6 +28,4 @@ Deberías ver el siguiente formulario:
 
 <img src="./images/formularioeliminar.png">
 
-En **Debug**, colocar un breakpoint en `DeletePokemonUseCase.delete(int id)` y comprobar que llega `id = 5`.
-
-<img src="./images/breakpointid.png">
+Si hemos eliminado el id de un Pokémon **existente** y vamos a <http://localhost:8080/pokemons>, deberíamos de ver que el Pokémon que ha tenido ese ID ha sido eliminado.

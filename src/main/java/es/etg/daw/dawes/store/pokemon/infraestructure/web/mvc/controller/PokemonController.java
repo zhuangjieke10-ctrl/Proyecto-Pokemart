@@ -51,10 +51,7 @@ public class PokemonController {
     @ResponseBody 
     public String listPokemon() {
 
-      //código para probar el advice
-      if(true) throw new NullPointerException("Simulado para probar el advice");
-  
-      List<Pokemon> pokemons = listPokemonService.listarPokemons();
+        List<Pokemon> pokemons = listPokemonService.listarPokemons();
 
       StringBuilder html = new StringBuilder();
       html.append(
