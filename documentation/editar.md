@@ -3,8 +3,8 @@
 Esta práctica permite recibir el **ID** del Pokémon desde la ruta y los **nuevos datos** desde el cuerpo de la petición.
 
 - Ruta: `PUT /pokemons/{id}`
-- Controller: `@PutMapping("/{id}")`, `@PathVariable int id`, `@RequestBody PokemonRequest`
-- Flujo: `PokemonController` → `PokemonMapper.toCommand(id, request)` → `EditPokemonService` → `EditPokemonUseCase`.
+- Controller: `@PutMapping("/{id}")`, `@PathVariable int id`, `@Valid @RequestBody PokemonRequest`
+- Flujo: `PokemonController` → `PokemonMapper.toCommand(id, request)` → `EditPokemonService` → `EditPokemonUseCase` → `PokemonRepository.getById()` y `save()`. Si no existe el ID, se lanza `PokemonNotFoundException`.
 
 ## Cómo probarlo
 
@@ -26,4 +26,6 @@ La aplicación esta preparada para mostrar un mensaje de error dependiendo de lo
 
 - El nombre del Pokémon no puede estar **vacío**. Tampoco  puede tener un **salto de línea ni espacio  en blanco**.
 - El tipo del Pokémon no puede estar **vacío**.
-- El preciod el Pokémon no puede estar ni por debajo de 0 ni por encima de 100.
+- El precio del Pokémon no puede estar ni por debajo de 0 ni por encima de 100.
+
+Los mensajes están definidos en `messages.properties`.

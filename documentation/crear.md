@@ -15,7 +15,7 @@ La aplicación permite introducir un Pokémon mediante un formulario HTML. El na
 
 ## Cómo funciona
 
-El Controller recibe `PokemonRequest` y el Mapper lo transforma en `CreatePokemonCommand`. Después, `CreatePokemonService` llama a `CreatePokemonUseCase`, que crea el objeto con `Pokemon.builder()` y devuelve el resultado al Controller.
+El Controller valida `PokemonRequest` con `@Valid` y el Mapper lo transforma en `CreatePokemonCommand`. Después, `CreatePokemonService` llama a `CreatePokemonUseCase`, que crea el objeto con `Pokemon.builder()` y lo guarda mediante `PokemonRepository.save()`.
 
 ## Gestión de validación
 
@@ -23,4 +23,7 @@ La aplicación esta preparada para mostrar un mensaje de error dependiendo de lo
 
 - El nombre del Pokémon no puede estar **vacío**. Tampoco  puede tener un **salto de línea ni espacio  en blanco**.
 - El tipo del Pokémon no puede estar **vacío**.
-- El preciod el Pokémon no puede estar ni por debajo de 0 ni por encima de 100.
+- El precio del Pokémon no puede estar ni por debajo de 0 ni por encima de 100.
+
+
+Los mensajes están definidos en `messages.properties`.

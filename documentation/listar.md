@@ -12,4 +12,4 @@ El listado de prueba muestra tres Pokémon estáticos: Bulbsaur, Charmander y Sq
 
 ## Cómo funciona
 
-`PokemonController` atiende `GET /pokemons` y llama a `ListPokemonService`, que delega en `FindPokemonUseCase`. El UseCase crea los tres objetos y devuelve una lista al Controller. Finalmente, el Controller genera el HTML con `StringBuilder` y un `for-each`.
+`PokemonController` atiende `GET /pokemons` y llama a `ListPokemonService`, que delega en `FindPokemonUseCase`. El UseCase consulta `PokemonRepository` y devuelve la lista almacenada en `PokemonRepositoryMockImpl`. Finalmente, el Controller genera el HTML con `StringBuilder` y un `for-each`.
