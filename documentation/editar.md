@@ -20,12 +20,4 @@ Debería de verse los resultados en <http://localhost:8080/pokemons>.
 
 <img src="./images/modificacionPokemon.png">
 
-## Gestión de validación
 
-La aplicación esta preparada para mostrar un mensaje de error dependiendo de los siguientes casos:
-
-- El nombre del Pokémon no puede estar **vacío**. Tampoco  puede tener un **salto de línea ni espacio  en blanco**.
-- El tipo del Pokémon no puede estar **vacío**.
-- El precio del Pokémon no puede estar ni por debajo de 0 ni por encima de 100.
-
-Los mensajes están definidos en `messages.properties`.
