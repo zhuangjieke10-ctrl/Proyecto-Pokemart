@@ -14,10 +14,10 @@ Java 17 · Spring Boot · Spring MVC · Maven · Lombok · HTML
 
 - **Crear Pokémon:** formulario HTML que envía una petición `POST /pokemons`.
 - **Listar Pokémon:** petición `GET /pokemons` que muestra tres Pokémon estáticos en HTML.
-- **Modificar Pokémon (prueba):** petición `PUT /pokemons/{id}` que recibe el ID y los datos, y devuelve un resultado sin actualizar datos almacenados.
-- **Eliminar Pokémon (prueba):** petición `DELETE /pokemons/{id}` que transmite el ID hasta el UseCase y responde con `204 No Content`, sin borrar datos almacenados.
+- **Modificar Pokémon:** petición `PUT /pokemons/{id}` que recibe el ID y los datos, y devuelve un resultado sin actualizar datos almacenados.
+- **Eliminar Pokémon:** petición `DELETE /pokemons/{id}` que transmite el ID hasta el UseCase y responde con `204 No Content`, sin borrar datos almacenados.
 
-> **Estado actual:** los Pokémon creados no se almacenan en una base de datos y no aparecen posteriormente en el listado. La lista de ejemplo se genera de nuevo en cada petición GET. Las operaciones PUT y DELETE sirven para comprobar el flujo y los parámetros de las peticiones, pero no modifican ni eliminan registros persistentes.
+> **Estado actual:** los Pokémon creados no se almacenan en una base de datos sino en la memoria RAM. La lista de ejemplo se genera de nuevo en cada petición GET. 
 
 
 ## Ejecutar el proyecto
